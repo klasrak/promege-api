@@ -10,6 +10,14 @@ if (!envFound) {
 
 export default {
   /**
+   * API
+   */
+  api: {
+    port: process.env.PORT,
+    host: process.env.HOST,
+    prefix: '/api/v1',
+  },
+  /**
    * Banco de dados
    */
   database: {

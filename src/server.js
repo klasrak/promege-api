@@ -1,11 +1,17 @@
 import app from './app';
+import config from './config';
+import logger from './logger';
 
-const port = 3000;
+const { api } = config;
 
-app.listen(port, err => {
-  if (err) {
-    process.exit(1);
-  }
-  // eslint-disable-next-line no-console
-  console.log('API Rodando');
-});
+async function startServer() {
+  app.listen(api.port, err => {
+    if (err) {
+      logger.error(`Erro: ${err.message}`);
+      process.exit(1);
+    }
+    logger.info(`Servidor rodando na porta ${api.port}`);
+  });
+}
+
+startServer();

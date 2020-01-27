@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import logger from './logger';
 
 class App {
   constructor() {
@@ -15,7 +16,7 @@ class App {
     this.app.use(cors());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(morgan('dev'));
+    this.app.use(morgan('combined', { stream: logger.stream }));
   }
 
   routes() {
